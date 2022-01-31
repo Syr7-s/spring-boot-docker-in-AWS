@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/aws/")
 public class AWSController {
 
-    @GetMapping("/message")
+    @GetMapping("message")
     public String getMessageInAWS(){
         return "Hi From AWS.";
     }
