@@ -6,8 +6,8 @@ metadata:
     run: recreate
 spec:
   ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 8085
+    - port: 8085
+      protocol: TCP
+      targetPort: 8085
   selector:
     run: recreate
