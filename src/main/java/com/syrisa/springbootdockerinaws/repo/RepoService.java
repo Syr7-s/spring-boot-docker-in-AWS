@@ -6,14 +6,14 @@ import java.util.List;
 @Component
 public interface RepoService<T,R> {
 
-    T create(T t);
+    T create(T t) throws Exception;
 
-    T update(T t);
+    T update(T t) throws Exception;
 
     T getByID(R r);
 
     List<T> getAll();
 
-    String delete(R r);
+    void delete(R r);
 
 }
