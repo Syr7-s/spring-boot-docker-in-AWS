@@ -8,3 +8,4 @@
 * kubectl set resources deployment/springdockeraws --limits=cpu=768m,memory=512Mi
 * kubectl port-forward pod/<container-name> <local-port>=<expose-port>
 * kubectl port-forward pod/springdockerwas-6684487bfc-jq6x9 8085:8085
+* minikube service-url springaws
