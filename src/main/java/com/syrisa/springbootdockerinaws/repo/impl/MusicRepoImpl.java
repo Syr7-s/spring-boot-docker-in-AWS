@@ -23,8 +23,6 @@ public class MusicRepoImpl implements MusicRepo {
 
     private static final Map<Long, List<Music>> musicRepo = new HashMap<>();
 
-
-
     @Override
     public Music create(Music music) throws Exception {
         if (isSingerRegisterInTheSystem.test(music.getSinger())) {
@@ -64,7 +62,6 @@ public class MusicRepoImpl implements MusicRepo {
     }
 
 
-
     private final Predicate<Singer> isSingerRegisterInTheSystem = (singer -> singerRepo.isSingerInTheRepo(singer.getSingerID()));
 
     @Override
@@ -98,5 +95,10 @@ public class MusicRepoImpl implements MusicRepo {
     @Override
     public Map<Long, List<Music>> writeMusic() {
         return musicRepo;
+    }
+
+    @Override
+    public Boolean isTheMusicRegisteredInTheRepository(Long musicID) {
+        return musicRepo.containsKey(musicID);
     }
 }
