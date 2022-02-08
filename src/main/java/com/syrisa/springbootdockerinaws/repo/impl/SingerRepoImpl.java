@@ -3,6 +3,7 @@ package com.syrisa.springbootdockerinaws.repo.impl;
 import com.syrisa.springbootdockerinaws.entity.Singer;
 import com.syrisa.springbootdockerinaws.exceptions.HttpStatusInfo;
 import com.syrisa.springbootdockerinaws.repo.SingerRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 
 @Component
+@RequiredArgsConstructor
 public class SingerRepoImpl implements SingerRepo {
 
     private static final Map<Long, Singer> singerRepo = new HashMap<>();
@@ -53,5 +55,15 @@ public class SingerRepoImpl implements SingerRepo {
                 .filter(singer -> singerRepo.containsKey(singer.getSingerID()))
                 .map(singer -> singerRepo.remove(singer.getSingerID()))
                 .forEach(System.out::println);
+    }
+
+    @Override
+    public Boolean isSingerInTheRepo(Long singerID) {
+        return singerRepo.containsKey(singerID);
+    }
+
+    @Override
+    public Map<Long, Singer> writeSinger() {
+        return singerRepo;
     }
 }
