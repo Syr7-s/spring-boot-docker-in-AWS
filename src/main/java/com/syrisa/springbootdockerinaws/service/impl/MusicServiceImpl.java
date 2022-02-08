@@ -3,6 +3,7 @@ package com.syrisa.springbootdockerinaws.service.impl;
 import com.syrisa.springbootdockerinaws.entity.Music;
 import com.syrisa.springbootdockerinaws.repo.MusicRepo;
 import com.syrisa.springbootdockerinaws.service.MusicService;
+import com.syrisa.springbootdockerinaws.utilties.generate.NumberGenerate;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class MusicServiceImpl implements MusicService {
 
     @Override
     public Music create(Music music) throws Exception {
+        music.setId(NumberGenerate.numberGenerate.apply(MUSIC_ID_LENGTH));
         return musicRepo.create(music);
     }
 

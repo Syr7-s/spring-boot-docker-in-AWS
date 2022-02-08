@@ -3,6 +3,7 @@ package com.syrisa.springbootdockerinaws.service.impl;
 import com.syrisa.springbootdockerinaws.entity.Singer;
 import com.syrisa.springbootdockerinaws.repo.SingerRepo;
 import com.syrisa.springbootdockerinaws.service.SingerService;
+import com.syrisa.springbootdockerinaws.utilties.generate.NumberGenerate;
 import lombok.RequiredArgsConstructor;
 
 
@@ -15,7 +16,7 @@ public class SingerServiceImpl implements SingerService {
 
     @Override
     public Singer create(Singer singer) throws Exception {
-
+        singer.setSingerID(NumberGenerate.numberGenerate.apply(SINGER_ID_LENGTH));
         return singerRepo.create(singer);
     }
 

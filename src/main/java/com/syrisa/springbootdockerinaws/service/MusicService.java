@@ -9,6 +9,8 @@ import java.util.Map;
 @Component
 public interface MusicService extends SongService<Music,Long> {
 
+    Integer MUSIC_ID_LENGTH = 6;
+
     List<Music> getMusicBy(Long id);
 
     Music getMusicByIdAndMusicName(Long id, String musicName);

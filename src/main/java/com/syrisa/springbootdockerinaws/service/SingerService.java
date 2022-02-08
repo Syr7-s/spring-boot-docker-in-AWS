@@ -4,9 +4,11 @@ import com.syrisa.springbootdockerinaws.entity.Singer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
+
 @Service
-public interface SingerService extends SongService<Singer,Long>{
+public interface SingerService extends SongService<Singer, Long> {
+
+    Integer SINGER_ID_LENGTH = 5;
 
     Singer getByID(Long id);
 
