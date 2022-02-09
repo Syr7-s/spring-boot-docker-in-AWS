@@ -1,5 +1,6 @@
 package com.syrisa.springbootdockerinaws.repo.impl;
 
+import com.syrisa.springbootdockerinaws.dto.MusicDto;
 import com.syrisa.springbootdockerinaws.entity.Music;
 import com.syrisa.springbootdockerinaws.entity.Singer;
 import com.syrisa.springbootdockerinaws.exceptions.HttpStatusInfo;
@@ -12,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Component
@@ -25,7 +25,7 @@ public class MusicRepoImpl implements MusicRepo {
 
     @Override
     public Music create(Music music) throws Exception {
-        if (isSingerRegisterInTheSystem.test(music.getSinger())) {
+        if (Boolean.TRUE.equals(isSingerRegisterInTheSystem(music.getSinger()))) {
             List<Music> musics;
             if (musicRepo.containsKey(music.getId())) {
                 musics = musicRepo.get(music.getId());
@@ -35,19 +35,21 @@ public class MusicRepoImpl implements MusicRepo {
                 musics.add(music);
             }
             musicRepo.put(music.getId(), musics);
+            return music;
         }
         throw new Exception(String.valueOf(HttpStatusInfo.HTTP_NOT_REGISTER_ON_THE_SYSTEM));
     }
 
     @Override
     public Music update(Music music) throws Exception {
-        if (isSingerRegisterInTheSystem.test(music.getSinger())) {
+        if (Boolean.TRUE.equals(isSingerRegisterInTheSystem(music.getSinger()))) {
             List<Music> musics;
             if (musicRepo.containsKey(music.getId())) {
                 musics = musicRepo.get(music.getId());
                 musics.add(music);
                 musicRepo.put(music.getId(), musics);
             }
+            return music;
         }
         throw new Exception(String.valueOf(HttpStatusInfo.HTTP_NOT_REGISTER_ON_THE_SYSTEM));
     }
@@ -62,7 +64,11 @@ public class MusicRepoImpl implements MusicRepo {
     }
 
 
-    private final Predicate<Singer> isSingerRegisterInTheSystem = (singer -> singerRepo.isSingerInTheRepo(singer.getSingerID()));
+    private Boolean isSingerRegisterInTheSystem(Singer singer) {
+       return singerRepo.isSingerInTheRepo(singer.getSingerID());
+    }
+
+    ;
 
     @Override
     public List<Music> getMusicBy(Long id) {
@@ -70,9 +76,9 @@ public class MusicRepoImpl implements MusicRepo {
     }
 
     @Override
-    public Music getMusicByIdAndMusicName(Long id, String musicName) {
+    public List<MusicDto> getMusicByIdAndMusicName(Long id, String musicName) {
 
-        return (Music) musicRepo.get(id).stream()
+        return musicRepo.get(id).stream()
                 .filter(music -> music.getMusicName().equals(musicName))
                 .map(Music::toMusicDto)
                 .collect(Collectors.toList());

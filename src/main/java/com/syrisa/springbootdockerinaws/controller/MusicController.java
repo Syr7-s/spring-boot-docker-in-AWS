@@ -36,9 +36,9 @@ public class MusicController {
     }
 
     @GetMapping("/music/{id}/{musicName}")
-    public MusicDto getMusicByAndMusicName(@PathVariable("id") Long id,@PathVariable("musicName") String musicName){
+    public List<Music> getMusicByAndMusicName(@PathVariable("id") Long id,@PathVariable("musicName") String musicName){
         try{
-            return musicService.getMusicByIdAndMusicName(id,musicName).toMusicDto();
+            return musicService.getMusicByIdAndMusicName(id,musicName).stream().map(MusicDto::toMusic).collect(Collectors.toList());
         }catch (Exception exception){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
         }

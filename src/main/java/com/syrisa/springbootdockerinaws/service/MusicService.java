@@ -1,19 +1,19 @@
 package com.syrisa.springbootdockerinaws.service;
 
+import com.syrisa.springbootdockerinaws.dto.MusicDto;
 import com.syrisa.springbootdockerinaws.entity.Music;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
-@Component
+@Service
 public interface MusicService extends SongService<Music,Long> {
 
     Integer MUSIC_ID_LENGTH = 6;
 
     List<Music> getMusicBy(Long id);
 
-    Music getMusicByIdAndMusicName(Long id, String musicName);
+    List<MusicDto> getMusicByIdAndMusicName(Long id, String musicName);
 
     String deleteMusicByMusicIdAndMusicName(Long id, String musicName) throws Exception;
 

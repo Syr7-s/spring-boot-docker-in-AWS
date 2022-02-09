@@ -1,13 +1,14 @@
 package com.syrisa.springbootdockerinaws.service.impl;
 
+import com.syrisa.springbootdockerinaws.dto.MusicDto;
 import com.syrisa.springbootdockerinaws.entity.Music;
 import com.syrisa.springbootdockerinaws.repo.MusicRepo;
 import com.syrisa.springbootdockerinaws.service.MusicService;
-import com.syrisa.springbootdockerinaws.utilties.generate.NumberGenerate;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 @RequiredArgsConstructor
 public class MusicServiceImpl implements MusicService {
 
@@ -15,7 +16,7 @@ public class MusicServiceImpl implements MusicService {
 
     @Override
     public Music create(Music music) throws Exception {
-        music.setId(NumberGenerate.numberGenerate.apply(MUSIC_ID_LENGTH));
+        music.setId(music.getSinger().getSingerID());
         return musicRepo.create(music);
     }
 
@@ -36,7 +37,7 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
-    public Music getMusicByIdAndMusicName(Long id, String musicName) {
+    public List<MusicDto> getMusicByIdAndMusicName(Long id, String musicName) {
         return musicRepo.getMusicByIdAndMusicName(id,musicName);
     }
 

@@ -5,10 +5,11 @@ import com.syrisa.springbootdockerinaws.repo.SingerRepo;
 import com.syrisa.springbootdockerinaws.service.SingerService;
 import com.syrisa.springbootdockerinaws.utilties.generate.NumberGenerate;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 
 import java.util.List;
-
+@Component
 @RequiredArgsConstructor
 public class SingerServiceImpl implements SingerService {
 

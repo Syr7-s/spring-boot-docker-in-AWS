@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -39,9 +40,7 @@ public class SingerRepoImpl implements SingerRepo {
 
     @Override
     public Singer getByID(Long aLong) {
-        return (Singer) singerRepo.values()
-                .stream()
-                .map(Singer::getSingerID);
+        return singerRepo.get(aLong);
     }
 
     @Override
@@ -51,10 +50,9 @@ public class SingerRepoImpl implements SingerRepo {
 
     @Override
     public void delete(Long aLong) {
-        singerRepo.values().stream()
-                .filter(singer -> singerRepo.containsKey(singer.getSingerID()))
-                .map(singer -> singerRepo.remove(singer.getSingerID()))
-                .forEach(System.out::println);
+        if (singerRepo.containsKey(aLong)){
+            singerRepo.remove(aLong);
+        }
     }
 
     @Override
