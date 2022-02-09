@@ -32,7 +32,6 @@ spec:
             port: 8085
           initialDelaySeconds: 30
           periodSeconds: 15
-          terminationGracePeriodSeconds: 60
         livenessProbe:
           httpGet:
             path: /actuator/health/liveness
