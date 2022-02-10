@@ -13,7 +13,7 @@
 * kubectl logs -f <container-name>
 * kubectl delete deployment <deployment-name>
 * kubectl set resources deployment/springdockeraws --limits=cpu=768m,memory=512Mi
-* kubectl port-forward pod/<container-name> <local-port>=<expose-port>
+* kubectl port-forward pod/container-name local-port=expose-port
 #### Scale 
 * kubectl scale deployment/<deploymentname> --replicas=5
 #### Port forward
