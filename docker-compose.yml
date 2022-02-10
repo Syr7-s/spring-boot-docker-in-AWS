@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  docker-spring:
+    image: syr7s/spring-docker-aws:v2
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+    ports:
+      - "8085:8085"
+    networks:
+      - spring-docker-aws
+networks:
+    spring-docker-aws:
+      driver: overlay
