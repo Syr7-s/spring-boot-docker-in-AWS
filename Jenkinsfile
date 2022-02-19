@@ -25,6 +25,7 @@ pipeline {
                 script {
                     productionImage = docker.build("${ACCOUNT_REGISTRY_PREFIX}/spring-boot-docker-in-aws:${GIT_COMMIT_HASH}")
                     productionImage.push()
+                    productionImage.push("${env.GIT_BRANCH}")
                 }
             }
         }
