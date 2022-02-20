@@ -1,0 +1,20 @@
+
+#!/bin/bash
+sudo yum install docker -y
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo groupadd docker  
+sudo usermod -aG docker $USER    
+sudo systemctl restart docker    
+newgrp docker 
+sudo reboot
+aws ecr get-login --no-include-email --region us-east-2 | bash
+
+cat <<EOF> start-spring-aws
+aws ecr get-login --no-include-email --region us-east-2 | bash
+sudo docker run -p 8085:8085 847534376633.dkr.ecr.us-east-2.amazonaws.com/spring-boot-docker-in-aws:master
+EOF
+
+sudo mv start-spring-aws /var/lib/cloud/scripts/per-boot/start-spring-aws
+sudo chmod +x /var/lib/cloud/scripts/per-boot/start-spring-aws
+/var/lib/cloud/scripts/per-boot/start-spring-aws
