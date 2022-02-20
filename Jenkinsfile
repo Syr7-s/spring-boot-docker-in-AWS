@@ -37,7 +37,7 @@ pipeline {
             steps {
                 echo 'Deploying release to production'
                 script {
-                    productionImage.push("deploy")
+                    productionImage.push("master")
                     sh """
                        aws ec2 reboot-instances --region us-east-2 --instance-ids i-048585b24401810d8
                     """
