@@ -1,0 +1,31 @@
+name: Spring Boot Docker in AWS
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: mvn -Dmaven.test.skip=true clean install 
+  image-generate:
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker image build -t sp-test:v1 -f Dockerfile .
+  execute:
+    needs: [image-generate]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker container run --it --name sp-aws -p 8085:8085 sp-test:v1
+  upload-file:
+    needs: [execute]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/upload-artifact@v2
+        with:
+          name: spring-boot-docker-in-aws
+          path: .
+  
