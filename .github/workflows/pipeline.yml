@@ -21,7 +21,7 @@ jobs:
   #    - uses: actions/checkout@v2
   #    - run: docker container run  --name sp-aws -p 8085:8085 sp-test:v1
   upload-file:
-    needs: [build]
+    needs: [image-generate]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
