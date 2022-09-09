@@ -10,6 +10,7 @@ jobs:
       - run: mvn -Dmaven.test.skip=true clean install 
   image-generate:
     needs: [build]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: docker image build -t sp-test:v1 -f Dockerfile .
