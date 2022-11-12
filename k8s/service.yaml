@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
     - port: 8085
-      protocol: TCP
+      #protocol: TCP
       targetPort: 8085
       nodePort: 30500
   selector:
