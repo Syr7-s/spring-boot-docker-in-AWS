@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: springdockerawscon
-        image: syr7s/spring-docker-aws:v2
+        image: syr7s/spring-docker-aws:v1
         resources:
           requests:
             memory: "128Mi"
