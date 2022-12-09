@@ -6,13 +6,13 @@ on: push
 
 jobs:
   build:
-    runs-on: syrisa
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - run: mvn -Dmaven.test.skip=true clean install 
   image-generate:
     needs: [build]
-    runs-on: syrisa
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - run: docker image build -t sp-test:v1 -f Dockerfile .
@@ -24,7 +24,7 @@ jobs:
   #    - run: docker container run  --name sp-aws -p 8085:8085 sp-test:v1
   upload-file:
     needs: [image-generate]
-    runs-on: syrisa
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - uses: actions/upload-artifact@v2
