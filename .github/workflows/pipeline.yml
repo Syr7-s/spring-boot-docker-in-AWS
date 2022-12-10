@@ -8,27 +8,32 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
+      - name: Maven Build
       - uses: actions/checkout@v2
-      - run: mvn -Dmaven.test.skip=true clean install 
-  image-generate:
-    needs: [build]
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v2
-      - run: docker image build -t sp-test:v1 -f Dockerfile .
+      - run: mvn -Dmaven.test.skip=true clean install
+      - name: PowerShell script
+      - uses: Amadevus/pwsh-script@v2.0.3
+        with:
+          script: Write-Host "Hello World" 
+#  image-generate:
+#    needs: [build]
+#    runs-on: self-hosted
+#    steps:
+#      - uses: actions/checkout@v2
+#      - run: docker image build -t sp-test:v1 -f Dockerfile .
   #execute:
   #  needs: [image-generate]
   #  runs-on: ubuntu-latest
   #  steps:
   #    - uses: actions/checkout@v2
   #    - run: docker container run  --name sp-aws -p 8085:8085 sp-test:v1
-  upload-file:
-    needs: [image-generate]
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/upload-artifact@v2
-        with:
-          name: spring-boot-docker-in-aws
-          path: .
+#  upload-file:
+#    needs: [image-generate]
+#    runs-on: self-hosted
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: spring-boot-docker-in-aws
+#          path: .
   
