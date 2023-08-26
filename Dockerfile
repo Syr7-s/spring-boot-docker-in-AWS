@@ -9,4 +9,4 @@ EXPOSE 8085
 COPY --from=BUILD /usr/src/app/target /opt/target
 WORKDIR /opt/target
 
-CMD ["/bin/bash", "-c", "find -type f -name '*-SNAPSHOT.jar' | xargs java -jar"]
+CMD ["/bin/bash", "-c", "find -type f -name '*.jar' | xargs java -jar"]
