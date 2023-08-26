@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: spring-docker-flow
-  namespace: namespace-workflow-1693071182079
+  namespace: spring-docker
 spec:
   type: LoadBalancer
   selector:
