@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-docker-flow
+  labels:
+    app: spring-docker-flow
+  namespace: namespace-workflow-1693071182079
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-docker-flow
+  template:
+    metadata:
+      labels:
+        app: spring-docker-flow
+    spec:
+      containers:
+        - name: spring-docker-flow
+          image: acrworkflow1693071182079.azurecr.io/image-workflow-1693071182079:latest
+          ports:
+            - containerPort: 8080
