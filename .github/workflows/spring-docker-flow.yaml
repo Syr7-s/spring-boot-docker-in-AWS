@@ -9,7 +9,7 @@ env:
     AZURE_CONTAINER_REGISTRY: acrworkflow1693071182079
     CLUSTER_NAME: syrAKSCluster
     CLUSTER_RESOURCE_GROUP: syrResourceGroup
-    CONTAINER_NAME: image-workflow-1693071182079
+    CONTAINER_NAME: spring-boot-docker-aws
     DEPLOYMENT_MANIFEST_PATH: |
         manifests/deployment.yaml
         manifests/service.yaml

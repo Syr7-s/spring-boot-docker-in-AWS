@@ -1,6 +1,6 @@
 name: Spring Boot Docker in AWS
 
-on: push
+on: "none"
 
 
 
