@@ -4,8 +4,8 @@ COPY . /usr/src/app
 RUN mvn --batch-mode -f /usr/src/app/pom.xml clean package
 
 FROM eclipse-temurin:8-jre
-ENV PORT 9080
-EXPOSE 9080
+ENV PORT 8085
+EXPOSE 8085
 COPY --from=BUILD /usr/src/app/target /opt/target
 WORKDIR /opt/target
 
