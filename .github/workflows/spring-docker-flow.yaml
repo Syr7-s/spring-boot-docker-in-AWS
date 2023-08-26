@@ -12,6 +12,7 @@ env:
     CONTAINER_NAME: spring-boot-docker-aws
     DEPLOYMENT_MANIFEST_PATH: |
         manifests/deployment.yaml
+        manifests/namespace.yaml
         manifests/service.yaml
 jobs:
     buildImage:
@@ -62,4 +63,4 @@ jobs:
                 action: deploy
                 images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-                namespace: namespace-workflow-1693071182079
+                namespace: spring-docker

@@ -4,7 +4,7 @@ metadata:
   name: spring-docker-flow
   labels:
     app: spring-docker-flow
-  namespace: namespace-workflow-1693071182079
+  namespace: spring-docker
 spec:
   replicas: 1
   selector:
