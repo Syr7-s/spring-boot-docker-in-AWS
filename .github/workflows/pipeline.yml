@@ -1,7 +1,8 @@
 name: Spring Boot Docker in AWS
 
-on: "none"
-
+on:
+  push:
+    branches: ["none"]
 
 
 jobs:

@@ -6,7 +6,7 @@ name: spring-docker-flow
     workflow_dispatch: {}
 env:
     ACR_RESOURCE_GROUP: syrResourceGroup
-    AZURE_CONTAINER_REGISTRY: acrworkflow1693071182079
+    AZURE_CONTAINER_REGISTRY: issyr
     CLUSTER_NAME: syrAKSCluster
     CLUSTER_RESOURCE_GROUP: syrResourceGroup
     CONTAINER_NAME: spring-boot-docker-aws
