@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-docker-flow
+  name: spring-aws-docker
   labels:
-    app: spring-docker-flow
+    app: spring-aws-docker
   namespace: spring-docker
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-docker-flow
+      app: spring-aws-docker
   template:
     metadata:
       labels:
-        app: spring-docker-flow
+        app: spring-aws-docker
     spec:
       containers:
-        - name: spring-docker-flow
-          image: acrworkflow1693071182079.azurecr.io/spring-boot-docker-aws:latest
+        - name: spring-aws-docker
+          image: syrisa.azurecr.io/spring-boot-docker-aws:latest
           ports:
             - containerPort: 8085
