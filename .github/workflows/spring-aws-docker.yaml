@@ -5,7 +5,7 @@ name: spring-aws-docker
             - master
     workflow_dispatch: {}
 env:
-    ACR_RESOURCE_GROUP: syrResourceGroup
+    ACR_RESOURCE_GROUP: acrworkflow1693080616942
     AZURE_CONTAINER_REGISTRY: syrisa
     CLUSTER_NAME: syrAKSCluster
     CLUSTER_RESOURCE_GROUP: syrResourceGroup
