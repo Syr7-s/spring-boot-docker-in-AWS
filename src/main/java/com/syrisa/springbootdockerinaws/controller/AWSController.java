@@ -13,4 +13,11 @@ public class AWSController {
         return "Hi From AWS.";
     }
 
+
+    @GetMapping("messagefromaks")
+    public String getMessageFromAKS(){
+        return "Hi From AKS.";
+    }
+
+
 }
